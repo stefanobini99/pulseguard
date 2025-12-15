@@ -1,22 +1,63 @@
 version: '3.8'
+
 services:
   discovery-server:
     build: ./discovery-server
+    container_name: discovery-server
     ports:
       - "8761:8761"
     networks:
       - pulse-net
+    restart: unless-stopped  # Auto-restart if it crashes
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8761/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Note: Switched curl to wget because 'alpine' images often don't have curl installed by default,
+    # but they usually have wget. This prevents a "command not found" error.
 
   api-gateway:
     build: ./api-gateway
+    container_name: api-gateway
     ports:
       - "8080:8080"
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
     depends_on:
-      - discovery-server
+      discovery-server:
+        condition: service_healthy
     networks:
       - pulse-net
+    restart: on-failure
+
+  pulse-ingestion:
+    build: ./pulse-ingestion
+    container_name: pulse-ingestion
+    ports:
+      - "8081:8081"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
+    depends_on:
+      discovery-server:
+        condition: service_healthy
+    networks:
+      - pulse-net
+    restart: on-failure
+
+  pulse-processor:
+    build: ./pulse-processor
+    container_name: pulse-processor
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
+    depends_on:
+      discovery-server:
+        condition: service_healthy
+      pulse-ingestion:
+        condition: service_started
+    networks:
+      - pulse-net
+    restart: on-failure
 
 networks:
   pulse-net:
