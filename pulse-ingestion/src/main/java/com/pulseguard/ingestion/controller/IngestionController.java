@@ -1,6 +1,7 @@
 package com.pulseguard.ingestion.controller;
 
 import com.pulseguard.ingestion.dto.HeartbeatRequest;
+import com.pulseguard.ingestion.dto.MonitorStatusResponse;
 import com.pulseguard.ingestion.service.IngestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,13 +24,11 @@ public class IngestionController {
     }
 
     @GetMapping("/dead-monitors")
-    public List<HeartbeatRequest> getDeadMonitors() {
-        // Logic: Define "Dead" as not seen in 60 seconds
+    public List<MonitorStatusResponse> getDeadMonitors() {
+        // Business Rule: A monitor is "Dead" if we haven't heard from it in 60 seconds.
+        // In a real app, this interval would be configurable per monitor.
         LocalDateTime threshold = LocalDateTime.now().minusSeconds(60);
 
-        // In a real app, you would group by monitorId and pick the max timestamp
-        // Since this is only as portfolio it returns the raw list for the Processor to handle
-        // ... implementation logic ...
-        return List.of(); // Placeholder to make it compile
+        return service.getDeadMonitors(threshold);
     }
 }
