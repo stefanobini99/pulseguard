@@ -1,12 +1,11 @@
 # PulseGuard
 
----
-
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5.8-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
 ![Spring Cloud](https://img.shields.io/badge/Spring_Cloud-2025.0.0-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Microservices](https://img.shields.io/badge/Architecture-Microservices-blueviolet?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
 
 
@@ -16,7 +15,6 @@
 
 ## Architecture
 
----
 
 PulseGuard is built on a strict **Microservices Architecture** using **Java 21** and the **Spring Boot 3.5 / Spring Cloud 2025** ecosystem.
 
@@ -48,7 +46,6 @@ class H2 storage;
 
 ## Tech Stack
 
----
 - **Core:** Java 21, Spring Boot 3.5.x
 - **Cloud Native:** Spring Cloud Gateway, Netflix Eureka (Discovery)
 - **Communication:** OpenFeign (Synchronous REST), RESTful APIs
@@ -58,7 +55,6 @@ class H2 storage;
 
 ## Getting Started
 
----
 ### Prerequisites
 - Java 21 SDK
 - Maven 3.8+
@@ -77,7 +73,6 @@ class H2 storage;
 
 ## How to run
 
----
 ### Option A: Cloud-Native (Docker Compose) - Recommended
 This spins up the entire infrastructure (Discovery, Gateway, Databases, Services) in an isolated network.
 ```bash
@@ -96,7 +91,6 @@ If you do not have Docker running locally, you can start the services individual
 
 ## Module Overview
 
----
 | Module                 | Port       | Description                                                                         |
 |:-----------------------|:-----------|:------------------------------------------------------------------------------------|
 | ```discovery-server``` | ```8761``` | Eureka Server. Acts as the service registry.                                        |
@@ -106,7 +100,6 @@ If you do not have Docker running locally, you can start the services individual
 
 ## API Reference
 
----
 1. **Send a Heartbeat (Ping)**
 
     Scripts call this endpoint to confirm they are alive.
@@ -126,7 +119,6 @@ If you do not have Docker running locally, you can start the services individual
 
 ## Future Roadmap & Optimizations
 
----
 ### Phase 2: Performance (Database Optimization)
 Currently, the ```getDeadMonitors()``` logic uses a Java Stream implementation for the MVP.
 - Current State: Fetches dataset and filters in-memory (```O(N)```).
@@ -138,7 +130,6 @@ Currently, the ```getDeadMonitors()``` logic uses a Java Stream implementation f
 
 ## Author
 
----
 **Stefano Bini** *Java Software Developer | Spring Ecosystem Specialist*
 
 ---
