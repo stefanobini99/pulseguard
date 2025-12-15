@@ -27,6 +27,7 @@
         <module>discovery-server</module>
         <module>pulse-ingestion</module>
         <module>api-gateway</module>
+        <module>pulse-processor</module>
     </modules>
 
     <dependencyManagement>

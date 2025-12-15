@@ -18,7 +18,7 @@ public class IngestionService {
 
     public void processHeartbeat(HeartbeatRequest request) {
         log.info("Received heartbeat for monitor: {}", request.monitorId());
-        
+
         MonitorHeartbeat entity = MonitorHeartbeat.builder()
                 .monitorId(request.monitorId())
                 .status(request.status())
