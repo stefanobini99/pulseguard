@@ -1,5 +1,6 @@
 # PulseGuard
 
+![CI Status](https://img.shields.io/github/actions/workflow/status/stefanobini99/pulseguard/ci-pipeline.yml?style=for-the-badge&logo=githubactions&label=Build)
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5.8-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
 ![Spring Cloud](https://img.shields.io/badge/Spring_Cloud-2025.0.0-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
