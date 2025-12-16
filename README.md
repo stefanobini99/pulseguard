@@ -134,4 +134,4 @@ Currently, the ```getDeadMonitors()``` logic uses a Java Stream implementation f
 **Stefano Bini** *Java Software Developer | Spring Ecosystem Specialist*
 
 ---
-### Check out my [portfolio](https://stefanobini99.github.io/)
+### Check out my [portfolio](https://binistefano.github.io/)
