@@ -120,7 +120,7 @@ If you do not have Docker running locally, you can start the services individual
 
 ## Future Roadmap & Optimizations
 
-### Phase 2: Performance (Database Optimization)
+### ~~Phase 2: Performance (Database Optimization)~~ DONE
 Currently, the ```getDeadMonitors()``` logic uses a Java Stream implementation for the MVP.
 - Current State: Fetches dataset and filters in-memory (```O(N)```).
 - Planned Upgrade: Migration to a custom **JPQL/Native Query** to handle the "Greatest-N-Per-Group" problem directly in the database engine for ```O(1)``` performance at scale.
